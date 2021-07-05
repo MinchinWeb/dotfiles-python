@@ -30,15 +30,26 @@ finally:
     # ps1 and ps2
     sys.ps1 = "{}>>> {}".format(colorama.Fore.GREEN, colorama.Style.RESET_ALL)
     sys.ps2 = "{}... {}".format(colorama.Fore.YELLOW, colorama.Style.RESET_ALL)
+    del colorama
 
 # colored tracebacks
 try:
     import tbvaccine
 except ImportError:
     pass
-finally:
+else:
     tbvaccine.add_hook(isolate=False)
+    del tbvaccine
 
+# nicer display of printed objects
+try:
+    import rich
+except ImportError:
+    pass
+else:
+    from rich import pretty
+    pretty.install()
+    del pretty
 
 print()
 # http://www.wiseoldsayings.com/python-quotes/
