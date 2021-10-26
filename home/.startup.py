@@ -21,7 +21,7 @@ try:
     import colorama
 except ImportError:
     pass
-finally:
+else:
     colorama.init()
 
     # set up colored prompt
